@@ -35,6 +35,20 @@ function lightupgrn() {
     $(".grn").css("background-color","#00ff00");
     setTimeout(darkengrn,500);
 }
+function reset() {
+    darkenred();
+    darkenblu();
+    darkengrn();
+    darkenyel();
+}
+function wrong() {
+    $(".simonlight").css("background-color","#ff0000");
+    setTimeout(reset,500);
+}
+function correct() {
+    $(".simonlight").css("background-color","#00ff00");
+    setTimeout(reset,500);
+}
 
 
 
@@ -83,13 +97,14 @@ function check() {
         score++;
         input = [];
         console.log("score is ", score);
-        newstep();
+        setTimeout(correct,50);
+        setTimeout(newstep,510);
     }
     else {
         score = 0;
         input = [];
         pattern = [];
-        alert("Try Again");
+        wrong();
     }
 }
 
