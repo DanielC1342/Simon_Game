@@ -40,29 +40,59 @@ function lightupgrn() {
 
 var input = [];
 var pattern = [];
+var counter = 0;
+var score = 0;
 function lightpattern() {
-    pattern.forEach(function(x) {
-        if(x === 0) {
+    pattern.forEach(function() {
+        if (pattern[counter] === 0) {
             lightupred();
         }
-        if(x === 1) {
+        if (pattern[counter] === 1) {
             lightupblu();
         }
-        if(x === 2) {
+        if (pattern[counter] === 2) {
             lightupyel();
         }
-        if(x === 3) {
+        if (pattern[counter] === 3) {
             lightupgrn();
         }
     });
 }
+function go() {
+    var i = setInterval(function () {
+        lightpattern();
+        counter++;
+        if (counter === pattern.length) {
+            clearInterval(i);
+            counter = 0;
+        }
+    }, 600);
+}
 function newstep() {
     var clr = Math.floor(Math.random()*4);
     pattern.push(clr);
-    lightpattern();
+    go();
     console.log(pattern);
 
 }
+function check() {
+    var inputstr = input.join('');
+    var patternstr = pattern.join('');
+
+    if(inputstr === patternstr) {
+        score++;
+        input = [];
+        console.log("score is ", score);
+        newstep();
+    }
+    else {
+        score = 0;
+        input = [];
+        pattern = [];
+        alert("Try Again");
+    }
+}
+
 $("#begin").click(newstep);
 
 
@@ -70,24 +100,36 @@ $("#begin").click(newstep);
 $(".red").click(function() {
     lightupred();
     input.push(0);
+    if(input.length === pattern.length) {
+       check();
+    }
     console.log(input);
 });
 
 $(".blu").click(function() {
     lightupblu();
     input.push(1);
+    if(input.length === pattern.length) {
+        check();
+    }
     console.log(input);
 });
 
 $(".yel").click(function() {
     lightupyel();
     input.push(2);
+    if(input.length === pattern.length) {
+        check();
+    }
     console.log(input);
 });
 
 $(".grn").click(function() {
     lightupgrn();
     input.push(3);
+    if(input.length === pattern.length) {
+        check();
+    }
     console.log(input);
 });
 
