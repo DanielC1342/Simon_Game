@@ -1,0 +1,26 @@
+.game {
+    height: 700px;
+    width: 700px;
+}
+
+.simonlight {
+    height: 300px;
+    width: 300px;
+    margin: 23px;
+}
+
+.red {
+    background-color: #ba0000;
+}
+
+.blu {
+    background-color: #0000ba;
+}
+
+.yel {
+    background-color: #baba00;
+}
+
+.grn {
+    background-color: #008c00;
+}
