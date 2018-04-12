@@ -96,12 +96,13 @@ function check() {
     if(inputstr === patternstr) {
         score++;
         input = [];
-        console.log("score is ", score);
+        $('#score').text("Score: "+ JSON.stringify(score));
         setTimeout(correct,50);
         setTimeout(newstep,510);
     }
     else {
         score = 0;
+        $("#score").text("Score: 0");
         input = [];
         pattern = [];
         wrong();
